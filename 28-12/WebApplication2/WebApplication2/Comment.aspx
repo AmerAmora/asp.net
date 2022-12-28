@@ -16,11 +16,11 @@
             <ContentTemplate>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 <asp:TextBox ID="TextBox1" runat="server">
-
-                </asp:TextBox> <asp:Button ID="Button1" runat="server" Text="Button" OnClick="send" />
+                </asp:TextBox> <asp:Button ID="Button1" ValidationGroup="g1" runat="server" Text="Button" OnClick="send" />
                 </ContentTemplate>
             </asp:UpdatePanel>
-        
+            <asp:RequiredFieldValidator ControlToValidate="TextBox1" ValidationGroup="g1" runat="server" ErrorMessage="Field is required" ForeColor="red"></asp:RequiredFieldValidator>
+
     </form>
     <script type="text/javascript">
         function successalert() {

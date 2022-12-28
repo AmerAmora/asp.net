@@ -36,6 +36,7 @@ namespace WebApplication2
         }
         protected void send(object sender, EventArgs e)
         {
+            if (Page.IsValid) { 
             connection.Open();
             SqlCommand comand = new SqlCommand($"insert into comment values('{TextBox1.Text}');", connection);
             comand.ExecuteNonQuery();   
@@ -43,7 +44,7 @@ namespace WebApplication2
             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert();", true);
 
             print();
-
+            }
         }
     }
 }
