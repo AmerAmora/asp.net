@@ -40,6 +40,8 @@ namespace WebApplication2
             SqlCommand comand = new SqlCommand($"insert into comment values('{TextBox1.Text}');", connection);
             comand.ExecuteNonQuery();   
             connection.Close();
+            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert();", true);
+
             print();
 
         }
