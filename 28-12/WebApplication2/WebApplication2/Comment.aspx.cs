@@ -14,12 +14,14 @@ namespace WebApplication2
         SqlConnection connection = new SqlConnection("data source = DESKTOP-8NTQ6AN\\SQLEXPRESS; database = task2 ; integrated security=SSPI");
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["Id"] = 1;
             print();
          
         }
         protected void print() 
         
         {
+           
 
             connection.Open();
             string table =
