@@ -35,11 +35,22 @@ namespace WebApplication1.Account
             //}
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection Con= new SqlConnection(connectionString);
+            //using the web cofing connection method feel free to use the other method
+            //ex :  SqlConnection con = new SqlConnection("data source=DESKTOP-8NTQ6AN\\SQLEXPRESS; database=Votes; integrated security=SSPI");
+            //both works 
+
             Con.Open();
-            Guid g = Guid.NewGuid();
+            Guid g = Guid.NewGuid(); //Generates a random id to store it in the data base
+                                     //بتعملي اي دي عشوائي عشان اخزنه بالداتا بيس و ما يتكرر 
+
+
             SqlCommand command = new SqlCommand($"insert into AspNetUsers values('{g}','{Email.Text}',0,'AIa5VYrpJy2KqO29U','AIa5VYrpJy2KqO29U','',0,0,1,1,0,'{g}')",Con);
+            //inserting data into the users table with all the requied values 
+            //خزنا قيم بتيبل اليوزر بعدد الكولومز المطلوبين  
             command.ExecuteNonQuery();
             string query = $"insert into AspNetUserRoles values('{g}',{RadioButtonList1.SelectedValue})";
+            // inserting the same user id + the role that the user chose into the userRoles table
+            // خزنا اليوزر اي دي نفسه الي عملناه فوق +  قيمة الرول الي اختارها الوزر
             SqlCommand rolecommand = new SqlCommand(query,Con);
             rolecommand.ExecuteNonQuery();
             Con.Close();
